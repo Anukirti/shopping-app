@@ -19,6 +19,7 @@ const searchBox = document.querySelectorAll(".search-box");
 const searchBox2 = document.getElementById("search-box2");
 const noResultMessage = document.getElementById("no-results");
 
+let productCount = 0;
 let products = [];
 let productList =[];
 let filteredProducts = [];
@@ -158,7 +159,7 @@ async function fetchProducts() {
     // With lazy load
     const endIndex = currentIndex + itemsPerLoad;
     const productsToShow = filteredProducts.slice(currentIndex,endIndex);
-
+    productCount = filteredProducts.slice(0,endIndex).length;
     productsToShow.forEach(product=>{
       const productCard = document.createElement("div");
       productCard.classList.add("product-card");
@@ -265,11 +266,8 @@ function searchProducts(){
     }else{
       noResultMessage.style.display = 'none'
       count.style.display ='flex';
-      count.innerHTML = (productList.length) + ' Results';
+      count.innerHTML = 'Showing ' + productCount +' / ' + (productList.length) + ' Results'; 
     }
-    
-    
-
   }
  
   // Function to adjust the grid layout based on screen size
