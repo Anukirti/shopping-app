@@ -42,6 +42,8 @@ body, ul, li, a {
 }
   /* Navbar Styles */
 .navbar {
+  position: sticky;
+  top: 0;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -124,18 +126,21 @@ body, ul, li, a {
     margin-top: 1rem;
     padding: 1rem;
   }
-/*    
+ #side-panel{
+  background-color: #007bff;
+  color: white;
+ } 
   .side-panel li {
     margin-bottom: 1rem;
   }
    
   .side-panel ul {
-    padding-top: 1rem;
+    margin-top: 2rem;
   }
   .side-panel a {
-    color: #181C24;
+    
     font-size: 1rem;
-  } */
+  } 
 
   .categories{
     margin-bottom: 1rem;
@@ -150,14 +155,14 @@ body, ul, li, a {
     background-color: #D1D3D6;
     border-width: 0;
    }
-  .checkbox-group {
+  /* .checkbox-group {
     margin: 15px 0;
   }
-   
   .custom-checkbox {
     display: flex;
     align-items: center;
     margin-bottom: 10px;
+    cursor: pointer;
   }
    
   .custom-checkbox input {
@@ -172,7 +177,7 @@ body, ul, li, a {
   }
    
   .custom-checkbox input:checked {
-    background-color: #007BFF;
+    
     border-color: #007BFF;
     position: relative;
   }
@@ -180,7 +185,6 @@ body, ul, li, a {
   .custom-checkbox input:checked::after {
     content: '';
     display: block;
-    /* width: 10px; */
     height: 10px;
     background-color: #fff;
     position: absolute;
@@ -192,7 +196,63 @@ body, ul, li, a {
   .custom-checkbox span {
     color: #333;
     cursor: pointer;
-  }
+  } */
+
+
+
+  /* checkbox with check mark */
+
+  /* Container styling */
+.checkbox-group {
+  margin: 15px 0;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+ 
+/* Hide the default checkbox */
+.filter-checkbox {
+  display: none;
+}
+ 
+/* Style the custom checkbox */
+.custom-checkbox {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  gap: 8px;
+}
+ 
+/* The custom checkbox mark */
+.checkbox-mark {
+  width: 18px;
+  height: 18px;
+  border: 2px solid #555;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.3s, border-color 0.3s;
+}
+ 
+/* Add tick mark using pseudo-element */
+.checkbox-mark::after {
+  content: "✔";
+  font-size: 14px;
+  color: white;
+  display: none;
+}
+ 
+/* When the checkbox is checked */
+.filter-checkbox:checked + .checkbox-mark {
+  background-color: #007bff;
+  border-color: #007bff;
+}
+ 
+.filter-checkbox:checked + .checkbox-mark::after {
+  display: block;
+}
+
   .see-results {
 	display: block;
 	margin: 20px auto;
@@ -208,7 +268,6 @@ body, ul, li, a {
     background-image: url('images/header_image.png');
     height: 160px;
     width: 70%;
-    margin: 1rem 0;
   }
   .header-title{
     background-color: #1B252C;
@@ -246,6 +305,15 @@ body, ul, li, a {
   width: 60%;
   padding: 1rem;
   
+}
+#loading-spinner{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+  font-size: 1.5rem;
+  font-weight: 600;
+
 }
 .flat-btn{
   text-decoration: underline !important;
@@ -339,6 +407,24 @@ select{
 .item{
   order: 0;
 }
+
+#no-results{
+  color: red;
+  font-weight: 600;
+  justify-content: center;
+  align-items: center;
+}
+
+.search-box{
+  border: none;
+  border-radius: 1rem;
+  padding: 5px;
+  width: 240px;
+}
+.close{
+  display: unset;
+}
+
   /* Responsive Design */
   @media screen and (max-width: 768px) {
     .nav-links {
@@ -421,18 +507,20 @@ select{
     }
     
     .navbar{
-      padding: 0.5rem 1rem;;
+      padding: 0.5rem ;
     }
 
-  }
-  .close{
-    display: unset;
+    .search-box{
+      border: solid #545D63;
+    }
+    .search-bar-mobile{
+      display: none;
+    }
   }
 
   @media screen and (max-width: 480px) {
     .header-image{
       width: 100%;
-      margin: unset;
   }
   .header-section{
       display: grid;
@@ -449,5 +537,11 @@ select{
   }
   .header-item-2{
     order: 1;
+  }
+  .search-bar{
+    display: none;
+  }
+  .search-bar-mobile{
+    display: block;
   }
   }

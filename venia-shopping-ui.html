@@ -23,6 +23,9 @@
         <li><a href="#">Services</a></li>
         <li><a href="#">Contact</a></li>
       </ul>
+      <div class="search-bar">
+        <input type="text" class="search-box" id="search-box" placeholder="Search products...">
+      </div>
       <div class="cart">
         <img src="images/shopping-bag.png" width="32px">
         <span class="badge">10</span>
@@ -31,8 +34,30 @@
     <!-- side panel for mobile view -->
     <div class="side-panel" id="side-panel">
       <div class="panel-heading">
-        <p class="heading">Filters</p>
+        <div class="logo">VENIA</div>
         <div class="close" id="close">
+          <img src="images/close_icon.svg" width="24px">
+        </div>
+        
+      </div>
+      <div class="panel-body">
+        <ul >
+          <li><a href="#">Home</a></li>
+          <li><a href="#">About</a></li>
+          <li><a href="#">Services</a></li>
+          <li><a href="#">Contact</a></li>
+        </ul>
+          
+      </div>
+        
+    </div>
+    <div id="overlay" class="overlay"></div>
+     
+    <!-- side panel filters for mobile view -->
+    <div class="side-panel" id="side-panel-filters">
+      <div class="panel-heading">
+        <p class="heading">Filters</p>
+        <div class="closeFilter" id="closeFilter">
           <img src="images/close_icon.svg" width="24px">
         </div>
         
@@ -47,32 +72,37 @@
 
           <div class="checkbox-group" id="checkbox-group">
             <label class="custom-checkbox">
-              <input type="checkbox" class="filter-checkbox">
+              <input type="checkbox" class="filter-checkbox" value="jewelery">
+              <span class="checkbox-mark"></span>
               <span>Jewellery</span>
             </label>
             <label class="custom-checkbox">
-              <input type="checkbox" class="filter-checkbox">
+              <input type="checkbox" class="filter-checkbox" value="electronics">
+              <span class="checkbox-mark"></span>
               <span>Electronics</span>
             </label>
             <label class="custom-checkbox">
-              <input type="checkbox" class="filter-checkbox">
+              <input type="checkbox" class="filter-checkbox" value="men's clothing">
+              <span class="checkbox-mark"></span>
               <span>Men's Clothing</span>
             </label>
             <label class="custom-checkbox">
-              <input type="checkbox" class="filter-checkbox">
+              <input type="checkbox" class="filter-checkbox" value="women's clothing">
+              <span class="checkbox-mark"></span>
               <span>Women's Clothing</span>
             </label>
             <hr>
           </div>
             
-          <button class="see-results">See 17 Results</button>
+          <button class="see-results" id="seeResults">See 17 Results</button>
         </div>
           
       </div>
         
     </div>
-    <div id="overlay" class="overlay"></div>
-     
+    <div id="overlay2" class="overlay2"></div>
+
+
     <section class="header-section">
       <div class="header-title header-item header-item-1">
         <div>
@@ -91,6 +121,9 @@
     <section class="main-content">
        
       <div class="sidebar">
+        <div class="search-bar-mobile">
+          <input type="text" class="search-box" id="search-box2" placeholder="Search products...">
+        </div>
         <div class="pagenav">
           <p >Clothing / Women's / <span style="color: #545D63;">Outerwear</span></p>
         </div>
@@ -98,11 +131,12 @@
         <div class="filters-mob">
           <div class="filter-results">
             <img src="images/sliders.svg"> 
-            <a href="#" class="flat-btn" >Filter Results</a>
+            <a href="#" class="flat-btn" id="filter-btn">Filter Results</a>
             
           </div>
           <div class="sort-products">
-            <img src="images/arrow-up.svg"> <img src="images/arrow-down.svg"> 
+            <img src="images/arrow-up.svg" id="priceUp"> 
+            <img src="images/arrow-down.svg" id="priceDown"> 
             <a href="#" class="flat-btn" >Sort Products</a>
             
           </div>
@@ -116,19 +150,23 @@
         
             <div class="checkbox-group" id="checkbox-group">
               <label class="custom-checkbox">
-                <input type="checkbox" class="filter-checkbox">
+                <input type="checkbox" class="filter-checkbox" value="jewelery">
+                <span class="checkbox-mark"></span>
                 <span>Jewellery</span>
               </label>
               <label class="custom-checkbox">
-                <input type="checkbox" class="filter-checkbox">
+                <input type="checkbox" class="filter-checkbox" value="electronics">
+                <span class="checkbox-mark"></span>
                 <span>Electronics</span>
               </label>
               <label class="custom-checkbox">
-                <input type="checkbox" class="filter-checkbox">
+                <input type="checkbox" class="filter-checkbox" value="men's clothing">
+                <span class="checkbox-mark"></span>
                 <span>Men's Clothing</span>
               </label>
               <label class="custom-checkbox">
-                <input type="checkbox" class="filter-checkbox">
+                <input type="checkbox" class="filter-checkbox" value="women's clothing">
+                <span class="checkbox-mark"></span>
                 <span>Women's Clothing</span>
               </label>
               <hr>
@@ -147,17 +185,23 @@
           </div>
           <div class="sort">
             <select name="sort" id="sort">
-              <option value="byPrice">Sort by Price</option>
-              <option value="byBrand">Sort by Brand</option>
-              <option value="bycolor">Sort by Color</option>
+              <option value="high-low">Sort by high to low price</option>
+              <option value="low-high">Sort by low to high price</option>
             </select>
           </div>
           </div>
           <!-- product list -->
-          <div id="product-container" class="container">
-
+          <div id="loading-spinner" style="display: none;" class="grey">
+            <p>Loading...</p>
           </div>
-          <div class="pagination" id="pagination"></div>
+          <div id="no-results" style="display: none;">
+            <p>No Products Found</p>
+          </div>
+          <div id="product-container" class="container">
+            
+          </div>
+          <button id="load-more" class="load-more see-results">Load More</button>
+          <!-- <div class="pagination" id="pagination"></div> -->
         
       </div>
       
